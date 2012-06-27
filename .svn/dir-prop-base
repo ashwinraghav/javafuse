@@ -1,0 +1,10 @@
+K 10
+svn:ignore
+V 45
+javafuse
+tmp
+nullfs_mount.sh
+script.sh
+build
+
+END

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 16
+/svn/!svn/ver/27
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 23
+/svn/!svn/ver/1/LICENSE
+END
+build.conf
+K 25
+svn:wc:ra_dav:version-url
+V 26
+/svn/!svn/ver/5/build.conf
+END
+AUTHORS
+K 25
+svn:wc:ra_dav:version-url
+V 23
+/svn/!svn/ver/1/AUTHORS
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 23
+/svn/!svn/ver/17/README
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 24
+/svn/!svn/ver/5/Makefile
+END
+nullfs_mount.sh
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/19/nullfs_mount.sh
+END

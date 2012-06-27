@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 26
+/svn/!svn/ver/1/src/native
+END
+fsClass.c
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/1/src/native/fsClass.c
+END
+conninfoClass.c
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1/src/native/conninfoClass.c
+END
+statvfsClass.c
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1/src/native/statvfsClass.c
+END
+statClass.c
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/1/src/native/statClass.c
+END
+fileinfoClass.c
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1/src/native/fileinfoClass.c
+END
+javafuse_jni.c
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1/src/native/javafuse_jni.c
+END
+utimebufClass.c
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1/src/native/utimebufClass.c
+END
+contextClass.c
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/1/src/native/contextClass.c
+END

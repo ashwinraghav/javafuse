@@ -1,0 +1,42 @@
+/*
+ * JavaFuse - Java bindings for using FUSE.
+ * Copyright (C) 2009 SRI International
+ * 
+ * This program is free software: you can redistribute it and/or modify it under 
+ * the terms of the GNU General Public License as published by the Free Software 
+ * Foundation, either version 3 of the License, or (at your option) any later 
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT 
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS 
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along with 
+ * this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+# Configuration file for javaFUSE used by NullFS.
+# Consists of key/value pairs separated by spaces.
+# 0 = False, 1 = True
+
+# Name of Java class (should implement the JavaFS interface)
+# This is a required value!
+CLASSNAME nullfs/NullFS
+
+# Print debug output? This only works when run in foreground.
+DEBUG 0
+
+# Copy meta-data only? See write() call.
+META_DATA_ONLY 0
+
+# Call pre java methods?
+PRE_CALL 1 
+
+# Call post java methods?
+POST_CALL 1
+
+# Make system calls between pre and post java calls?
+SYS_CALL 1
+
+# Set here any external files/folders that should be included in the JVM classpath.
+#CLASSPATH /usr/share/je-3.3.62/lib/je-3.3.62.jar

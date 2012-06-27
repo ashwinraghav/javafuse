@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 24
+/svn/!svn/ver/1/src/java
+END
+Fuse_context.java
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/1/src/java/Fuse_context.java
+END
+Fuse_conn_info.java
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1/src/java/Fuse_conn_info.java
+END
+Statvfs.java
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1/src/java/Statvfs.java
+END
+Utimbuf.java
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/1/src/java/Utimbuf.java
+END
+Stat.java
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/1/src/java/Stat.java
+END
+Fuse_file_info.java
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/1/src/java/Fuse_file_info.java
+END

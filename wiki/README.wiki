@@ -1,0 +1,112 @@
+﻿#summary JavaFUSE Documentation
+#labels Featured
+
+= Introduction =
+
+JavaFUSE provides Java bindings for FUSE (http://fuse.sourceforge.net). It 
+allows filesystems to be written in a combination of C and Java by utilizing 
+the FUSE library, while aiming to provide maximum portability, flexibility,
+and ease of use.
+
+
+= Features =
+
+The C library works as following: for each FUSE callback, a corresponding
+user-defined Java method (Pre Call) is invoked. Then, the corresponding native
+system call (Sys Call) is invoked. Finally, another user-defined Java method
+(Post Call) is invoked. The parameters for the Pre Call are simply those that
+are received by the FUSE callback functions. The parameters are then copied
+back from the java Method before being passed to the Sys Call, which in turn
+may modify data that is then passed to the Post Call (along with the return
+value of the Sys Call).
+
+None of these three calls are required, however, and can be turned on or off
+using a configuration file, as described below in the Usage section.
+
+The rationale for the above behavior is that very often, FUSE filesystems
+extend the functionality of the underlying native filesystem, and utilize the
+native filesystem calls. Additional work may need to be done before or after
+the native call, or in both cases, hence the Pre and Post calls.
+
+Another paramter that can be configured (Meta Data Only) defines the behavior
+of the read and write callbacks. These calls may result in large amounts of
+data being copied between the Pre, Sys and Post calls (we do not use Java's
+direct IO buffers due to portability concerns). In the case of certain
+filesystems, copying the data would not be required. Turning on the Meta Data
+Only parameter will hence copy all the parameters except the actual data
+buffer (which will be passed to the Sys Call only).
+
+
+= Dependencies =
+
+In order to run correctly, Linux kernel version >= 2.6.9 and a FUSE kernel 
+module >= 2.7.0 are needed.
+
+However, for maximum performance one should use the 'big_writes' mount option 
+for FUSE which requires Linux kernel version >= 2.6.26 and a FUSE kernel 
+module >= 2.8.0.
+
+Java 1.4 or greater is required for proper JNI functionality.
+
+
+= Installation =
+
+Edit the variables 'build.conf' to provide the correct values for your system.
+
+Type 'make' to build the source code. This compiles the C code as well as
+wrapper classes written in Java. The JNI code is compiled into a shared
+library which is linked by the exeuctable.
+
+Debugging flags may be removed from the Makefile if needed. (such as removing 
+the -g flag and passing -dNDEBUG to disable asserts).
+
+
+= Usage =
+
+User defined Java filesystems must implement the "JavaFS" interface
+(fs/JavaFS.java), and the Java compiler must have the build directory in the
+classpath. A makefile is provided (fs/Makefile) which can be extended as
+needed.
+
+Each Java filesystem can be passed several options, either as command line
+arguments, or in a configuration file whose path is passed instead. The class
+name (including package name) of the filesystem is a required argument so that
+the library can reference it's methods.
+
+See the fs/nullfs directory for an example of a filesystem (in which the Java 
+methods do nothing) and the associated configuration file.
+
+Finally, run the "javafuse" executable. See util/nullfs_mount.sh for an example.
+
+
+= Similar Projects =
+
+There is an existing project (fuse-j) that provides Java bindings for FUSE but 
+it has been defunct for a while now. One motivation for creating JavaFUSE was 
+to ensure that the bindings are portable across different platforms, and work 
+with newer versions of FUSE (and are easy to update if the FUSE API changes).
+
+The design of JavaFUSE is different from other language bindings in that the 
+user executes a C program which then calls the Java methods, as opposed to 
+the user executing a Java (or whatever language the bindings may provide) 
+program which calls the C function fuse_mount. The JavaFUSE approach allows 
+the inclusion of C code (including native system calls) without the need for 
+the developer to write any additional JNI code.
+
+JavaFUSE can be made to work like fuse-j by simply turning off the Sys Call 
+and Post Call options in the configuration file.
+
+Also, JavaFUSE always copies every data structure (including those defined in 
+the system or by FUSE) back and forth between the C and Java calls, as this 
+information may be a necessity for some systems (for example, if they deal
+with meta-data structures).
+
+
+= Acknowledgements =
+
+This material is based upon work supported by the National Science Foundation under Grant OCI-0722068. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation.
+
+
+= Author =
+
+Aditya Rajgarhia (aditya at cs dot stanford dot edu)
