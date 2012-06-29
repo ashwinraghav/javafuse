@@ -43,7 +43,12 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <dirent.h>
-#include <sys/vfs.h>
+#if defined (__FreeBSD__)
+	include <sys/param.h>
+	include <sys/mount.h>
+#else
+	include <sys/vfs.h>
+#endif
 #include <sys/xattr.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -64,6 +69,16 @@ static char *fuseArgv[24];
 static char *javaArgv[24];
 static char *classname = NULL;
 static char *configfile = NULL;
+char *strdup(const char *str)
+{
+    int n = strlen(str) + 1;
+    char *dup = malloc(n);
+    if(dup)
+    {
+        strcpy(dup, str);
+    }
+    return dup;
+}
 
 static int javafuse_getattr(const char *path, struct stat *buf)
 {
